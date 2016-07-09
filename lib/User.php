@@ -69,9 +69,9 @@ class User
                 ], 'user');
                 return true;
             }
-        return $errors;
+            return $errors;
         }
-
+        return false;
     }
 
     public function auth()
@@ -90,7 +90,7 @@ class User
                 $errors[] = 'Пароль не должен быть короче 6-ти символов';
             }
             //prn($errors);
-            if($errors == false){
+            if ($errors == false) {
                 $pass = trim(md5($pass));
 
                 $user = $this->db->getWhere([
@@ -98,7 +98,7 @@ class User
                     'pass' => $pass,
                 ], 'user');
                 //prn($user);
-                if($user) {
+                if ($user) {
 
                     $hash = md5($this->generateCode());
                     $this->db->update(['hash' => $hash], 'user', ['id' => $user[0]['id']]);
