@@ -60,18 +60,17 @@ class User
             if ($errors == false) {
                 $pass = trim(md5($pass));
 
-                $this->db->insert([
+                $user = $this->db->insert([
                     'user_login' => $user_login,
                     'user_email' => $user_email,
                     'pass' => $pass,
                     'dt_add' => time(),
 
                 ], 'user');
-                return true;
+                return $user;
             }
             return $errors;
         }
-        return false;
     }
 
     public function auth()

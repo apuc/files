@@ -10,14 +10,9 @@
 <?php
 include_once ('init.php');
 $use = $user->register();
-prn($use);
-if(!is_array($use)){
-    if($use === false){
-        $parser->render('views/register_form.php');
-    }
-    else{
-        //header('Location:/');
-    }
+//prn($use);
+if($use){
+    header('Location:/');
 }else{
     $parser->render('views/register_form.php');
 }

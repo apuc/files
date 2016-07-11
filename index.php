@@ -17,6 +17,6 @@ if ($id) {
 } else {
     $parser->render($_SERVER['DOCUMENT_ROOT'].'/views/auth_form.php');
 }
-
+//$parser->render($_SERVER['DOCUMENT_ROOT'].'/views/main.php');
 
 
