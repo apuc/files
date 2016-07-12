@@ -28,3 +28,14 @@ body, html{
     margin-left: 10px;
 }
 
+.error{
+    color: red;
+    font-weight: bold;
+}
+
+.setting {
+    margin-top: 15px;
+    margin-left: 50px;
+    font-weight: bold;
+
+}

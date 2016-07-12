@@ -3,10 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>Файлы ArtCraft</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 
     <!-- jQuery and jQuery UI (REQUIRED) -->
-    <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css"
+          href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
@@ -31,28 +32,28 @@
 
         // Helper function to get parameters from the query string.
         function getUrlParam(paramName) {
-            var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i') ;
-            var match = window.location.search.match(reParam) ;
+            var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i');
+            var match = window.location.search.match(reParam);
 
-            return (match && match.length > 1) ? match[1] : '' ;
+            return (match && match.length > 1) ? match[1] : '';
         }
         var h = document.documentElement.clientHeight;
         console.log(getUrlParam('user'));
         var user = getUrlParam('user');
-        if(user == ''){
+        if (user == '') {
             var url = 'elfinder/php/connector.php';
         }
         else {
             var url = 'elfinder/php/connector.php?user=' + user;
         }
-        $().ready(function() {
+        $().ready(function () {
             var elf = $('#elfinder').elfinder({
                 lang: 'ru',
-                url : url,
+                url: url,
                 resizable: false,
                 height: h - 63,
-                handlers : {
-                    dblclick : function(event, elfinderInstance) {
+                handlers: {
+                    dblclick: function (event, elfinderInstance) {
                         console.log(event.data.clicked);
                         return false;
                     }
@@ -62,3 +63,13 @@
     </script>
 </head>
 <body>
+<?php if (isset($_COOKIE['id'])): ?>
+<div class="nav-bar">
+    <a href="/"><img src="/image/logotip.png" alt="logo"/></a>
+    <a href="/?logout=1" class="butt">Выход</a>
+    <a href="/profile/?profile=<?= user_get_login(); ?>" class="butt">Профиль</a>
+    <a href="/settings/?settings=<?= user_get_login(); ?>" class="butt">Настройки</a>
+    <a href="/?user=<?= user_get_login(); ?>" class="butt">Личные файлы</a>
+    <!--в value записываю значение id-->
+</div>
+<?php endif; ?>
