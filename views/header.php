@@ -56,3 +56,11 @@
     </script>
 </head>
 <body>
+<div class="nav-bar">
+    <a href="/"><img src="/image/logotip.png" alt="logo"/></a>
+    <a href="/?logout=1" class="butt" >Выход</a>
+    <a href="/profile/?profile=<?= user_get_login(); ?>" class="butt" >Профиль</a>
+    <a href="/settings/?settings=<?= user_get_login(); ?>" class="butt" >Настройки</a>
+    <a href="/?user=<?= user_get_login(); ?>" class="butt" >Личные файлы</a>
+    <!--в value записываю значение id-->
+</div>

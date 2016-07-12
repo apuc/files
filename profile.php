@@ -5,7 +5,6 @@
  * Date: 12.07.2016
  * Time: 11:25
  */
-include_once('init.php');
 $id = $cookie->get('id');
 $hash = $cookie->get('hash');
 $user_all = $user->get_user();
