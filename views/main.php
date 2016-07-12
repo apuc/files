@@ -1,30 +1,14 @@
-<?php getHeader() ?>
-    <!-- elFinder initialization (REQUIRED) -->
-    <script type="text/javascript" charset="utf-8">
-        // Documentation for client options:
-        // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
+<?php getHeader();
+?>
 
-        // Helper function to get parameters from the query string.
-        function getUrlParam(paramName) {
-            var reParam = new RegExp('(?:[\?&]|&amp;)' + paramName + '=([^&]+)', 'i') ;
-            var match = window.location.search.match(reParam) ;
+    <div class="nav-bar">
+        <img src="/image/logotip.png" alt="logo"/>
+        <a href="/?user=<?= user_get_login(); ?>" >Личные файлы</a>
+        <a href="/?logout=1" >Выход</a>
+        <!--в value записываю значение id-->
+    </div>
 
-            return (match && match.length > 1) ? match[1] : '' ;
-        }
-        var h = document.documentElement.clientHeight;
-        $().ready(function() {
-            var elf = $('#elfinder').elfinder({
-                lang: 'ru',
-                url : 'elfinder/php/connector.php',
-                resizable: false,
-                height: h - 63,
-                driver: 'MySQL'
-            }).elfinder('instance');
-        });
-    </script>
-<div class="nav-bar">
 
-</div>
-<!-- Element where elFinder will be created (REQUIRED) -->
-<div id="elfinder"></div>
+    <!-- Element where elFinder will be created (REQUIRED) -->
+    <div id="elfinder"></div>
 <?php getFooter() ?>

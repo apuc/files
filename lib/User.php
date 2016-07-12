@@ -112,6 +112,21 @@ class User
 
     }
 
+    public function logout()
+    {
+        /*$cookie->set('id', '');
+        $cookie->set('user_hash', '');
+        $cookie->set('ip', '');*/
+    }
+
+    public function get_login()
+    {
+
+        $id = $this->cookie->get('id');
+        $login = $this->db->getFromId($id, 'user');
+        return $login['user_login'];
+    }
+
     public function generateCode($length = 6)
     {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
@@ -121,6 +136,18 @@ class User
             $code .= $chars[mt_rand(0, $clen)];
         }
         return $code;
+    }
+
+    public function get_path(){
+        if(isset($_GET['user'])){
+            if(!file_exists($_SERVER['DOCUMENT_ROOT'] . '/users/' . $_GET['user'] )){
+                mkdir($_SERVER['DOCUMENT_ROOT'] . '/users/' . $_GET['user']);
+            }
+            return 'users/' . $_GET['user'];
+        }
+        else {
+            return 'files';
+        }
     }
 
 }
