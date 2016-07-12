@@ -38,7 +38,6 @@
             return (match && match.length > 1) ? match[1] : '';
         }
         var h = document.documentElement.clientHeight;
-        console.log(getUrlParam('user'));
         var user = getUrlParam('user');
         if (user == '') {
             var url = 'elfinder/php/connector.php';
@@ -52,11 +51,9 @@
                 url: url,
                 resizable: false,
                 height: h - 63,
-                handlers: {
-                    dblclick: function (event, elfinderInstance) {
-                        console.log(event.data.clicked);
-                        return false;
-                    }
+                getFileCallback: function(file, fm) {
+                    console.log(file);
+                    return false;
                 }
             }).elfinder('instance');
         });
