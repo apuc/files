@@ -31,6 +31,7 @@ if ($id) {
 $user_all = $user->get_user();
 if(isset($_POST['close'])){
     $close = $_POST['close'];
+    $close = 1;
     $close_f = $db->update(['close_file' => $close], 'user',['id' => $user_all['id']], true );
     $parser->render('views/alert_success.php', [
         'title' => 'Запись успешно сохранена!']);
