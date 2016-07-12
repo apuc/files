@@ -2,9 +2,9 @@
 ?>
 
     <div class="nav-bar">
-        <img src="/image/logotip.png" alt="logo"/>
-        <a href="/?user=<?= user_get_login(); ?>" >Личные файлы</a>
-        <a href="/?logout=1" >Выход</a>
+        <a href="/"><img src="/image/logotip.png" alt="logo"/></a>
+        <a href="/?logout=1" class="butt" >Выход</a>
+        <a href="/?user=<?= user_get_login(); ?>" class="butt" >Личные файлы</a>
         <!--в value записываю значение id-->
     </div>
 
