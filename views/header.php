@@ -50,7 +50,13 @@
                 lang: 'ru',
                 url : url,
                 resizable: false,
-                height: h - 63
+                height: h - 63,
+                handlers : {
+                    dblclick : function(event, elfinderInstance) {
+                        console.log(event.data.clicked);
+                        return false;
+                    }
+                }
             }).elfinder('instance');
         });
     </script>

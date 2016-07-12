@@ -65,14 +65,14 @@ function access($attr, $path, $data, $volume) {
 $opts = array(
 	// 'debug' => true,
 	'roots' => array(
-		array(
+		/*array(
 			'driver' => 'MySQL',
 			'host'   => 'localhost',
 			'user'   => 'root',
 			'pass'   => '',
 			'db'     => 'elfinder_file',
 			'path'   => 1,
-		),
+		),*/
 		array(
 			'driver'        => 'LocalFileSystem',   // driver for accessing file system (REQUIRED)
 			'path'          => $_SERVER['DOCUMENT_ROOT'] . '/' .$user->get_path(),         // path to files (REQUIRED)
