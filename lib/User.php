@@ -112,16 +112,8 @@ class User
 
     }
 
-    public function logout()
-    {
-        /*$cookie->set('id', '');
-        $cookie->set('user_hash', '');
-        $cookie->set('ip', '');*/
-    }
-
     public function get_login()
     {
-
         $id = $this->cookie->get('id');
         $login = $this->db->getFromId($id, 'user');
         return $login['user_login'];
