@@ -1,6 +1,5 @@
 <?php
 require_once('init.php');
-//prn($_SERVER);
 $id = $cookie->get('id');
 $hash = $cookie->get('hash');
 

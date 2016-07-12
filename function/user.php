@@ -9,3 +9,8 @@ function user_get_login(){
     global $user;
     return $user->get_login();
 }
+function user_get_user(){
+    global $user;
+    return $user->get_user();
+
+}

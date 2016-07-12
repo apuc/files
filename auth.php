@@ -11,5 +11,5 @@ $use = $user->auth();
 if(isset($use['id'])){
     header('Location:/');
 }else{
-    $parser->render('views/auth_form.php');
+    $parser->render('views/auth_form.php', ['errors' => $use]);
 }

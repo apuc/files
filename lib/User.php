@@ -47,6 +47,7 @@ class User
 
             if (empty($user_login) || strlen($user_login) < 3) {
                 $errors[] = 'Логин должен быть не менее 3-х символов! Поле обязательно к заполнению!';
+
             }
             if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
                 $errors[] = 'Неправильный email';
@@ -56,6 +57,11 @@ class User
                 $errors[] = 'Пароль не должен быть короче 6-ти символов';
             }
 
+
+            if ($this->isset_login($user_login)) {
+                $errors[] = 'Логин занят!';
+
+            }
 
             if ($errors == false) {
                 $pass = trim(md5($pass));
@@ -71,6 +77,14 @@ class User
             }
             return $errors;
         }
+
+    }
+
+    public function isset_login($login)
+    {
+        $isset = $this->db->getWhere(['user_login' => $login], 'user', true);
+        return $isset[0]['user_login'];
+
     }
 
     public function auth()
@@ -96,7 +110,7 @@ class User
                     'user_login' => $user_login,
                     'pass' => $pass,
                 ], 'user');
-                //prn($user);
+
                 if ($user) {
 
                     $hash = md5($this->generateCode());
@@ -108,6 +122,7 @@ class User
                 return false;
 
             }
+            return $errors;
         }
 
     }
@@ -119,27 +134,36 @@ class User
         return $login['user_login'];
     }
 
-    public function generateCode($length = 6)
+    public function get_user()
     {
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
-        $code = "";
-        $clen = strlen($chars) - 1;
-        while (strlen($code) < $length) {
-            $code .= $chars[mt_rand(0, $clen)];
-        }
-        return $code;
+        $id = $this->cookie->get('id');
+        $user_all = $this->db->getFromId($id, 'user');
+        return $user_all;
     }
 
-    public function get_path(){
-        if(isset($_GET['user'])){
-            if(!file_exists($_SERVER['DOCUMENT_ROOT'] . '/users/' . $_GET['user'] )){
-                mkdir($_SERVER['DOCUMENT_ROOT'] . '/users/' . $_GET['user']);
-            }
-            return 'users/' . $_GET['user'];
-        }
-        else {
-            return 'files';
-        }
+public
+function generateCode($length = 6)
+{
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
+    $code = "";
+    $clen = strlen($chars) - 1;
+    while (strlen($code) < $length) {
+        $code .= $chars[mt_rand(0, $clen)];
     }
+    return $code;
+}
+
+public
+function get_path()
+{
+    if (isset($_GET['user'])) {
+        if (!file_exists($_SERVER['DOCUMENT_ROOT'] . '/users/' . $_GET['user'])) {
+            mkdir($_SERVER['DOCUMENT_ROOT'] . '/users/' . $_GET['user']);
+        }
+        return 'users/' . $_GET['user'];
+    } else {
+        return 'files';
+    }
+}
 
 }

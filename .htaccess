@@ -1,3 +1,18 @@
 DefaultLanguage ru
 AddDefaultCharset utf-8
 php_value default_charset "utf-8"
+AddType text/css .css
+AddType image/jpeg .jpeg .jpg .jpe .JPG
+AddType application/x-httpd-php .html .htm
+
+Options -MultiViews
+RewriteEngine On
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]

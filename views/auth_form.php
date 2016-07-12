@@ -2,6 +2,11 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <div class="container">
         <div class="row">
+            <?php if (isset($errors)): ?>
+                <?php foreach ($errors as $error): ?>
+                    <div class="error"><?= $error; ?></div>
+                <?php endforeach; ?>
+            <?php endif; ?>
             <div class="login-box">
 
                 <!-- /.login-logo -->
