@@ -130,4 +130,16 @@ class User
         return $code;
     }
 
+    public function get_path(){
+        if(isset($_GET['user'])){
+            if(!file_exists($_SERVER['DOCUMENT_ROOT'] . '/users/' . $_GET['user'] )){
+                mkdir($_SERVER['DOCUMENT_ROOT'] . '/users/' . $_GET['user']);
+            }
+            return 'users/' . $_GET['user'];
+        }
+        else {
+            return 'files';
+        }
+    }
+
 }

@@ -3,12 +3,9 @@ body, html{
     padding: 0;
 }
 .nav-bar {
-
     width: 100%;
     height: 60px;
     background: #cfdade;
-
-
 }
 
 .butt{
@@ -30,3 +27,4 @@ body, html{
     margin-top: 5px;
     margin-left: 10px;
 }
+

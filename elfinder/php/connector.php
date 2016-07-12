@@ -7,6 +7,7 @@ error_reporting(0); // Set E_ALL for debuging
 
 // elFinder autoload
 require './autoload.php';
+include '../../init.php';
 // ===============================================
 
 // Enable FTP connector netmount
@@ -65,13 +66,22 @@ $opts = array(
 	// 'debug' => true,
 	'roots' => array(
 		array(
+			'driver' => 'MySQL',
+			'host'   => 'localhost',
+			'user'   => 'root',
+			'pass'   => '',
+			'db'     => 'elfinder_file',
+			'path'   => 1,
+		),
+		array(
 			'driver'        => 'LocalFileSystem',   // driver for accessing file system (REQUIRED)
-			'path'          => $_SERVER['DOCUMENT_ROOT'].'/files/',         // path to files (REQUIRED)
-			'URL'           => 'http://' . $_SERVER['HTTP_HOST'] . '/files/', // URL to files (REQUIRED)
+			'path'          => $_SERVER['DOCUMENT_ROOT'] . '/' .$user->get_path(),         // path to files (REQUIRED)
+			'URL'           => 'http://' . $_SERVER['HTTP_HOST'] . '/' .$user->get_path(), // URL to files (REQUIRED)
 			//'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
 			//'uploadAllow'   => array('image', 'text/plain'),// Mimetype `image` and `text/plain` allowed to upload
 			//'uploadOrder'   => array('deny', 'allow'),      // allowed Mimetype `image` and `text/plain` only
-			'accessControl' => 'access'                     // disable and hide dot starting files (OPTIONAL)
+			'accessControl' => 'access'      ,               // disable and hide dot starting files (OPTIONAL)
+
 		),
 	),
 	/*'roots' => array(

@@ -37,10 +37,18 @@
             return (match && match.length > 1) ? match[1] : '' ;
         }
         var h = document.documentElement.clientHeight;
+        console.log(getUrlParam('user'));
+        var user = getUrlParam('user');
+        if(user == ''){
+            var url = 'elfinder/php/connector.php';
+        }
+        else {
+            var url = 'elfinder/php/connector.php?user=' + user;
+        }
         $().ready(function() {
             var elf = $('#elfinder').elfinder({
                 lang: 'ru',
-                url : 'elfinder/php/connector.php',
+                url : url,
                 resizable: false,
                 height: h - 63
             }).elfinder('instance');
