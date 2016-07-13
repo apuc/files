@@ -9,7 +9,10 @@
 $id = $cookie->get('id');
 $hash = $cookie->get('hash');
 $user_all = $user->get_user();
-
+if($user_all['status'] == 0){
+    echo 'Страница не доступна';
+    die;
+}
 if (isset($_GET['del'])) {
     $db->queryDelete('user', $_GET['del']);
     $parser->render('views/alert_success.php', [
