@@ -1,3 +1,8 @@
+<?php /**
+ * @var $user_all
+ */
+global $user;
+$user_all = $user->get_user();?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,11 +70,11 @@
 <body>
 <?php if (isset($_COOKIE['id'])): ?>
 <div class="nav-bar">
-    <a href="/"><img src="/image/logotip.png" alt="logo"/></a>
+    <a href="/"><img src="/image/logotip.png" alt="logo" class="logo"/></a>
+   <img src="/upload/<?=$user_all['user_login']?>.png" class="photo"/>
     <a href="/?logout=1" class="butt">Выход</a>
     <a href="/profile/?profile=<?= user_get_login(); ?>" class="butt">Профиль</a>
     <a href="/settings/?settings=<?= user_get_login(); ?>" class="butt">Настройки</a>
     <a href="/?user=<?= user_get_login(); ?>" class="butt">Личные файлы</a>
-    <!--в value записываю значение id-->
 </div>
 <?php endif; ?>

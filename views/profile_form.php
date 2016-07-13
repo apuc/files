@@ -15,7 +15,7 @@ getHeader();
                 <div class="register-box-body">
                     <p class="login-box-msg"></p>
                     <h3 align="center">Профиль пользователя</h3>
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
 
                         <lable>Изменить email</lable>
                         <div class="form-group has-feedback">
@@ -30,7 +30,13 @@ getHeader();
                                     value="">
                             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <p>Загрузите Ваше фото</p>
+                                <input type="file" name="photo" placeholder=""/>
+                            </div>
 
+                        </div>
                         <div class="row">
                             <div class="col-xs-4">
 
