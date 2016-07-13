@@ -8,7 +8,8 @@
 
 include_once ('init.php');
 $use = $user->register();
-if(isset($use['id'])){
+
+if(!is_array($use)){
     header('Location:/');
 }else{
     $parser->render('views/register_form.php', ['errors' => $use]);
