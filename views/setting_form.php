@@ -12,18 +12,31 @@ getHeader();
 
 <h3 align="center">Настройки</h3>
 <div class="container">
-    <div >
-        <form action="" method="post">
-<lable class="setting">Закрыть доступ к личным файлам</lable>
-<input type="checkbox" <?= ($user_all['close_file'] == 0) ? '' : 'checked'?> name="close" ></br>
-
-            <div class="col-xs-2">
-                <button type="submit" name="save" class="btn btn-primary btn-block btn-flat">
-                    Сохранить
-                </button>
-            </div>
-
+    <div>
+        <table border="1">
+            <form action="" method="post">
+                <tr>
+                    <td>
+                        <lable class="setting">Закрыть доступ к личным файлам</lable>
+                    </td>
+                    <td><input type="checkbox" <?= ($user_all['close_file'] == 0) ? '' : 'checked' ?> name="close"></br>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="col-xs-4">
+                            </div>
+                        <div class="col-xs-4">
+                            <button type="submit" name="save" class="btn btn-primary btn-block btn-flat">
+                                Сохранить
+                            </button>
+                        </div>
+                        <div class="col-xs-4">
+                            </div>
+                    </td>
+                </tr>
             </form>
-        </div>
-        </div>
+        </table>
+    </div>
+</div>
 <?php getFooter(); ?>

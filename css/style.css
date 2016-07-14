@@ -23,7 +23,7 @@ body, html{
     color: #3c2c69;
 }
 
-.nav-bar img {
+.logo {
     margin-top: 5px;
     margin-left: 10px;
 }
@@ -35,7 +35,29 @@ body, html{
 
 .setting {
     margin-top: 15px;
-    margin-left: 50px;
+
     font-weight: bold;
+
+}
+
+.container table {
+    margin: auto;
+    margin-top: 20px;
+
+
+}
+
+.container table tr td{
+    padding: 10px;
+    width: 400px;
+    text-align: center;
+ }
+
+.photo {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
 
 }
