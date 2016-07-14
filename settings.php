@@ -8,7 +8,8 @@
 $id = $cookie->get('id');
 $hash = $cookie->get('hash');
 
-$user_all = $user->get_user();
+
+
 if(isset($_POST['save'])){
     $close = (isset($_POST['close'])) ? 1 : 0;
     $close_f = $db->update(['close_file' => $close], 'user',['id' => $user_all['id']], true );

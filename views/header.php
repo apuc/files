@@ -15,9 +15,12 @@
     <link rel="stylesheet" type="text/css" href="elfinder/css/elfinder.min.css">
     <link rel="stylesheet" type="text/css" href="elfinder/css/theme.css">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/sass.css">
     <!-- elFinder JS (REQUIRED) -->
     <script src="elfinder/js/elfinder.min.js"></script>
     <script src="elfinder/js/i18n/elfinder.ru.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/psd.min.js"></script>
 
     <!-- GoogleDocs Quicklook plugin for GoogleDrive Volume (OPTIONAL) -->
     <!--<script src="js/extras/quicklook.googledocs.js"></script>-->
@@ -46,14 +49,28 @@
             var url = 'elfinder/php/connector.php?user=' + user;
         }
         $().ready(function () {
+            var PSD = require('psd');
+
             var elf = $('#elfinder').elfinder({
                 lang: 'ru',
                 url: url,
                 resizable: false,
                 height: h - 63,
                 getFileCallback: function(file, fm) {
-                    console.log(file);
-                    return false;
+                    if(file.mime == "image/vnd.adobe.photoshop"){
+                        var psdModal = $('#psd-modal');
+                        psdModal.css({display:'block'});
+                        PSD.fromURL(file.path).then(function(psd) {
+                            var psdBody = $('#psd-body');
+                            var png = psd.image.toPng();
+                            png.style.width = "100%";
+                            png.style.height = "auto";
+                            psdBody.html(png);
+                        });
+                    }
+                    else {
+                        fm.exec('open');
+                    }
                 }
             }).elfinder('instance');
         });
